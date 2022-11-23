@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'; //material 에 flutter THEME이라던지 필요한 것들 들어있음
 
-void mian() => runApp(MyApp()); //가장 먼저 실행되는 부분
+void main() => runApp(MyApp()); //가장 먼저 실행되는 부분
 
 class MyApp extends StatelessWidget {
   //클래스 이름은 항상 PasCal 형식으로
