@@ -29,12 +29,12 @@ class MyPage extends StatelessWidget {
         centerTitle: true,
         elevation: 0.0,
         //무조건 appbar에서만 쓰이는 것은 아니고, 간단한 위젯이나 아이콘 appbar에 타이틀 왼쪽에 위치시키기 가능
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            print("menu button is clicked");
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.menu),
+        //   onPressed: () {
+        //     print("menu button is clicked");
+        //   },
+        // ),
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -49,6 +49,68 @@ class MyPage extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('hi1234'),
+              accountEmail: Text('hi@naver.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('assets/images/cat.jpeg'),
+              ),
+              otherAccountsPictures: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/hill.jpeg'),
+                ),
+              ],
+              onDetailsPressed: () {
+                //이메일 우측에 화살표
+                print("arrow is clicked");
+              },
+              decoration: BoxDecoration(
+                  color: Colors.red[400],
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40.0),
+                      bottomRight: Radius.circular(40.0))),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: Colors.grey[850],
+              ),
+              title: Text('Home'),
+              onTap: (() {
+                print('HOme is clicked');
+              }),
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.grey[850],
+              ),
+              title: Text('Setting'),
+              onTap: (() {
+                print('Setting is clicked');
+              }),
+              trailing: Icon(Icons.add),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.grey[850],
+              ),
+              title: Text('Q&A'),
+              onTap: (() {
+                print('Q&A is clicked');
+              }),
+              trailing: Icon(Icons.add),
+            )
+          ],
+        ),
       ),
       body: Text('hi'),
     );
