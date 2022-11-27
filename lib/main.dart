@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -113,7 +114,45 @@ class MyPage extends StatelessWidget {
             ],
           ),
         ),
-        body: MySnackBar());
+        body: SafeArea(
+          child: Center(
+              child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween, //세로 축 정렬
+            //verticalDirection: VerticalDirection.down,
+            crossAxisAlignment: CrossAxisAlignment.end, //children을 가로축 정렬
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.blue,
+                child: Text('Container1'),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.red,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Container2',
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.pink,
+                child: Text('Container3'),
+              ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                color: Colors.blue,
+              )
+            ],
+          )),
+        ));
   }
 }
 
@@ -126,36 +165,36 @@ class MySnackBar extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           var snackBar = SnackBar(
-            content: Text(
-              'Hello World',
-              textAlign: TextAlign.center,
-              style:TextStyle(color: Colors.white, )
-            ),
-            backgroundColor: Colors.teal
-            duration: Duration(milliseconds: 1000),//1000은 1초임
+            content: Text('Hello World',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+            backgroundColor: Colors.teal,
+            duration: const Duration(milliseconds: 1000), //1000은 1초임
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         style: ButtonStyle(
-          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
-          foregroundColor: MaterialStateProperty.all(Colors.blue),
-        ),
+            textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
+            foregroundColor: MaterialStateProperty.all(Colors.blue),
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromARGB(255, 232, 237, 241))),
         child: Text("TextButton"),
       ),
     );
   }
 }
 
-Center testing() {
-  //이거는 함수다 !
-  return Center(
-    child: TextButton(
-      onPressed: () {},
-      style: ButtonStyle(
-        textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
-        foregroundColor: MaterialStateProperty.all(Colors.black),
-      ),
-      child: Text("TextButton"),
-    ),
-  );
-}
+// //gravity : 위치 선정
+// void flutterToast() {
+//   Fluttertoast.showToast(
+//       msg: 'Flutter',
+//       gravity: ToastGravity.BOTTOM,
+//       backgroundColor: Colors.white,
+//       fontSize: 20.0,
+//       textColor: Colors.white,
+//       toastLength: Toast.LENGTH_SHORT);
+// }
+
+
