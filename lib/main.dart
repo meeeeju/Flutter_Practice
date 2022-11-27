@@ -113,21 +113,49 @@ class MyPage extends StatelessWidget {
             ],
           ),
         ),
-        body: Builder(
-          builder: (ctx) {
-            return Center(
-              child: TextButton(
-                onPressed: () {
-                  Scaffold.of(ctx).showSnackBar(SnackBar(content: Text("hellooo")))
-                },
-                style: ButtonStyle(
-                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
-                  foregroundColor: MaterialStateProperty.all(Colors.blueAccent),
-                ),
-                child: Text("TextButton"),
-              ),
-            );
-          }
-        ));
+        body: MySnackBar());
   }
+}
+
+class MySnackBar extends StatelessWidget {
+  const MySnackBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          var snackBar = SnackBar(
+            content: Text(
+              'Hello World',
+              textAlign: TextAlign.center,
+              style:TextStyle(color: Colors.white, )
+            ),
+            backgroundColor: Colors.teal
+            duration: Duration(milliseconds: 1000),//1000은 1초임
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        },
+        style: ButtonStyle(
+          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
+          foregroundColor: MaterialStateProperty.all(Colors.blue),
+        ),
+        child: Text("TextButton"),
+      ),
+    );
+  }
+}
+
+Center testing() {
+  //이거는 함수다 !
+  return Center(
+    child: TextButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14)),
+        foregroundColor: MaterialStateProperty.all(Colors.black),
+      ),
+      child: Text("TextButton"),
+    ),
+  );
 }
